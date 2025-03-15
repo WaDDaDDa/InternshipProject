@@ -4,6 +4,7 @@ using UnityEngine;
 public class TopDownMovement : MonoBehaviour
 {
     private TopDownController controller;
+    private CharacterStatHandler characterStatHandler;
     private Rigidbody2D movementRigidbody;
 
     private Vector2 movemnetDirection = Vector2.zero;
@@ -12,6 +13,7 @@ public class TopDownMovement : MonoBehaviour
     {
         controller = GetComponent<TopDownController>();
         movementRigidbody = GetComponent<Rigidbody2D>();
+        characterStatHandler = GetComponent<CharacterStatHandler>();
     }
 
     private void Start()
@@ -31,7 +33,7 @@ public class TopDownMovement : MonoBehaviour
 
     private void ApplyMovemnet(Vector2 direction)
     {
-        direction = direction * 5;
+        direction = direction * characterStatHandler.CurrentStat.speed;
         movementRigidbody.linearVelocity = direction;
     }
 }
