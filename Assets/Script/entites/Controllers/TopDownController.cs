@@ -10,26 +10,32 @@ public class TopDownController : MonoBehaviour
 
     protected bool IsAttacking { get; set; }
     private float timeSinceLastAttack = float.MaxValue;
-
+    private Rigidbody2D rb;
     protected CharacterStatHandler stats {get; private set;}
 
     virtual protected void Awake()
     {
         stats = GetComponent<CharacterStatHandler>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+private void Update()
     {
         HandleAttackDelay();
     }
 
     private void HandleAttackDelay()
     {
+        if (rb == null || rb.linearVelocity.magnitude > 0)
+        {
+            return;
+        }
+
         if (timeSinceLastAttack <= stats.CurrentStat.attackSO.delay)
         {
             timeSinceLastAttack += Time.deltaTime;
         }
-        else if (IsAttacking && timeSinceLastAttack > stats.CurrentStat.attackSO.delay)
+        else if (timeSinceLastAttack > stats.CurrentStat.attackSO.delay)
         {
             timeSinceLastAttack = 0f;
             CallAttackEvent(stats.CurrentStat.attackSO);
