@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,10 +12,13 @@ public class TopDownShooting : MonoBehaviour
     private Vector2 aimDirection = Vector2.right;
 
     public GameObject tsetPrefab;
+    private ObjectPool pool;
 
     private void Awake()
     {
         controller = GetComponent<TopDownController>();
+        pool = GameObject.FindFirstObjectByType<ObjectPool>();
+
     }
 
     private void Start()
@@ -31,6 +35,10 @@ public class TopDownShooting : MonoBehaviour
     private void OnShoot(AttackSO attackSO)
     {
         RangedAttackSO rangedAttackSO = attackSO as RangedAttackSO;
+        if (rangedAttackSO == null)
+        {
+            return;
+        }
         float projectilesAngleSpace = rangedAttackSO.multipleProjectilesAngle;
         int numberOfProjectilesPerShot = rangedAttackSO.numberofProjectilesPerShot;
 
@@ -46,9 +54,10 @@ public class TopDownShooting : MonoBehaviour
 
     private void CreateProjectile(RangedAttackSO rangedAttackSO, float angle)
     {
-        GameObject obj = Instantiate(tsetPrefab);
+        GameObject obj = pool.SpawnFromPool(rangedAttackSO.bulletNameTag);
         obj.transform.position = projectileSpawnPosition.position;
         ProjectileController attackController = obj.GetComponent<ProjectileController>();
+
         attackController.InitializeAttack(RotateVector2(aimDirection, angle), rangedAttackSO);
     }
 

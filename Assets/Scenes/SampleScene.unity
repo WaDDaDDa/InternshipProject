@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 165977923}
   - component: {fileID: 165977925}
   - component: {fileID: 165977924}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2086,6 +2086,54 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &451968312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451968314}
+  - component: {fileID: 451968313}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &451968313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451968312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcccac8c2dcff234489e1f41e6ba174b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Bullet
+    prefab: {fileID: 1933152155469165489, guid: 57dc78fa0f2c4044daa2df31cbefbbf5, type: 3}
+    size: 20
+--- !u!4 &451968314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451968312}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,7 +2365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 766158529}
   - component: {fileID: 766158530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2404,7 +2452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 952764971}
   - component: {fileID: 952764972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2491,7 +2539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975866909}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2522,7 +2570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1317589144}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2558,7 +2606,7 @@ GameObject:
   - component: {fileID: 1332290401}
   - component: {fileID: 1332290400}
   - component: {fileID: 1332290399}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3342,7 +3390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1463521497}
   - component: {fileID: 1463521496}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3394,7 +3442,8 @@ GameObject:
   - component: {fileID: 1931000713}
   - component: {fileID: 1931000714}
   - component: {fileID: 1931000715}
-  m_Layer: 0
+  - component: {fileID: 1931000716}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3453,9 +3502,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931000707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a874ecca9e5a1524abc72ce8e1e9ce37, type: 3}
+  m_Script: {fileID: 11500000, guid: 06379e54c67233a48be0c17a378e0a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armRenderer: {fileID: 766158530}
+  armPivot: {fileID: 1317589144}
+  characterRenderer: {fileID: 952764972}
 --- !u!114 &1931000711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3465,7 +3517,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931000707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3835c2dcaf374334ab140d36cba133ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 995d4f268f8ca3b429a8f8ae9709e315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1931000712
@@ -3553,12 +3605,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931000707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15e25435fd86814883e19873db4c657, type: 3}
+  m_Script: {fileID: 11500000, guid: 368220459e1ebb04598f6b4d607bbb19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armRenderer: {fileID: 766158530}
-  armPivot: {fileID: 1317589144}
-  characterRenderer: {fileID: 952764972}
+  projectileSpawnPosition: {fileID: 975866909}
+  tsetPrefab: {fileID: 1933152155469165489, guid: 57dc78fa0f2c4044daa2df31cbefbbf5, type: 3}
 --- !u!114 &1931000715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3568,11 +3619,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931000707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc433a8db541f64190238c5bf437335, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f8b283a340279444aee010e9af96364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpawnPosition: {fileID: 975866909}
-  tsetPrefab: {fileID: 1933152155469165489, guid: 57dc78fa0f2c4044daa2df31cbefbbf5, type: 3}
+--- !u!114 &1931000716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931000707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1e409a50138114ea59498457f6f5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats:
+    statsChangeType: 0
+    maxHealth: 10
+    speed: 5
+    attackSO: {fileID: 11400000, guid: 9ea75b4c3323348408efdc5881b86577, type: 2}
+  statsModifiers: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3581,3 +3648,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1931000709}
   - {fileID: 1463521497}
+  - {fileID: 451968314}
