@@ -15,10 +15,12 @@ public class CharacterAnimationController : AnimationController
     private static readonly int Attack = Animator.StringToHash("Attack");
 
     private readonly float magnituteThreshold = 0.5f;
+    private HealthSystem healthSystem;
 
     protected override void Awake()
     {
         base.Awake();
+        healthSystem = GetComponent<HealthSystem>();
     }
 
     void Start()
@@ -26,6 +28,12 @@ public class CharacterAnimationController : AnimationController
         // 공격하거나 움직일 때 애니메이션이 같이 반응하도록 구독
         controller.OnAttackEvent += Attacking;
         controller.OnMoveEvent += Move;
+
+        if(healthSystem != null)
+        {
+            healthSystem.OnDamage += Hit;
+            healthSystem.OnInvincibilityEnd += InvincibilityEnd;
+        }
     }
 
     private void Move(Vector2 obj)

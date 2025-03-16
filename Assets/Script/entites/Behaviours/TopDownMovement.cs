@@ -36,7 +36,7 @@ public class TopDownMovement : MonoBehaviour
             knockBackDuration -= Time.fixedDeltaTime;
         }
     }
-    public void ApplyKnock(Transform other, float power, float duration)
+    public void ApplyKnockBack(Transform other, float power, float duration)
     {
         knockBackDuration = duration;
         knockBack = -(other.position - transform.position).normalized * power;
