@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         if(spawnDelay <= 0)
         {
             GameObject obj = instance.objectPool.SpawnFromPoolMonster("Skeleton");
-            spawnDelay = 1.0f;
+            spawnDelay = 2.0f;
         }
     }
 

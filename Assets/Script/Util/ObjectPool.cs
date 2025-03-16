@@ -57,7 +57,7 @@ public class ObjectPool : MonoBehaviour
 
         GameObject obj = PoolDictionary[tag].Dequeue();
         PoolDictionary[tag].Enqueue(obj);
-        obj.transform.position = GetRandomScreenPosition();
+        // obj.transform.position = GetRandomScreenPosition();
         obj.SetActive(true);
         return obj;
     }
