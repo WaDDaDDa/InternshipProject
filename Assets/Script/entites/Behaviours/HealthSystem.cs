@@ -24,7 +24,7 @@ public class HealthSystem : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        ResetHealth();
     }
 
     private void Update()
@@ -73,5 +73,10 @@ public class HealthSystem : MonoBehaviour
     private void CallDeath()
     {
         OnDeath?.Invoke();
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
     }
 }

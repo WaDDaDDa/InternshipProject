@@ -17,7 +17,7 @@ public class DestroyOnDeath : MonoBehaviour
     private void OnDeath()
     {
         rb.linearVelocity = Vector2.zero;
-        foreach(SpriteRenderer render in GetComponentsInChildren<SpriteRenderer>())
+/*        foreach(SpriteRenderer render in GetComponentsInChildren<SpriteRenderer>())
         {
             Color color = render.color;
             color.a = 0.3f;
@@ -27,8 +27,9 @@ public class DestroyOnDeath : MonoBehaviour
         foreach(Behaviour behaviour in GetComponentsInChildren<Behaviour>())
         {
             behaviour.enabled = false;
-        }
+        }*/
 
-        // Destroy(gameObject, 2f);
+        gameObject.SetActive(false);
+        healthSystem.ResetHealth();
     }
 }

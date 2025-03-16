@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public ObjectPool objectPool {  get; private set; }
     public Transform player { get; private set; }
+    private float spawnDelay = 1.0f;
 
     private void Awake()
     {
@@ -16,4 +18,15 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag(playerTag).transform;
         objectPool = GetComponent<ObjectPool>();
     }
+
+    private void Update()
+    {
+        spawnDelay -= Time.deltaTime;
+        if(spawnDelay <= 0)
+        {
+            GameObject obj = instance.objectPool.SpawnFromPoolMonster("Skeleton");
+            spawnDelay = 1.0f;
+        }
+    }
+
 }
